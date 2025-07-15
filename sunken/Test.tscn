@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4cub0pyy3w6l"]
+[gd_scene load_steps=10 format=3 uid="uid://4cub0pyy3w6l"]
 
 [ext_resource type="Script" uid="uid://bctde6kyw1vdm" path="res://player.gd" id="1_myinc"]
 
@@ -26,6 +26,8 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njov2"]
 albedo_color = Color(0.443137, 0, 1, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myinc"]
+
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -37,12 +39,13 @@ shadow_enabled = true
 environment = SubResource("Environment_2au82")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98584, -0.4995, 0.985901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947023, -0.490549, 0.98764)
 use_collision = true
 size = Vector3(45, 0.001, 45)
 material = SubResource("StandardMaterial3D_myinc")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180484, 0.428102, -0.151661)
 script = ExtResource("1_myinc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
@@ -64,3 +67,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65079, 0.0146033, -0.561523
 use_collision = true
 size = Vector3(1.95605, 1, 2.12305)
 material = SubResource("StandardMaterial3D_njov2")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99251, 1.02693, -0.00346088)
+shape = SubResource("CapsuleShape3D_myinc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000347137, 0.559171, -6.70395)
+mesh = SubResource("CapsuleMesh_njov2")
