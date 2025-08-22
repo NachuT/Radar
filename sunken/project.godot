@@ -23,6 +23,10 @@ project/assembly_name="sunken"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+player=""
+
 [input]
 
 left={

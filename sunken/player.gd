@@ -19,13 +19,17 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * sensitivity)
 		camera.rotate_x(-event.relative.y*sensitivity)
-		camera.rotation.x= clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+		camera.rotation.x= clamp(camera.rotation.x, deg_to_rad(-100), deg_to_rad(60))
 	elif event.is_action_pressed("esc"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif event is InputEventMouseButton and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _physics_process(delta):
+	if global_transform.origin.y < -10.0:
+		global_transform.origin = Vector3(0, .2, 0)
+		velocity = Vector3.ZERO  
+		
 	if Input.is_action_pressed("shift"):
 		speed=playerspeedsp
 	else:
